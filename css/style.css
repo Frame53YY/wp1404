@@ -161,7 +161,9 @@ img {
   background-image: url("/images/bg.svg");
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center 192px;
+  background-position: 0 192px;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 .hero-section .container {
@@ -185,6 +187,12 @@ img {
 }
 /* ------------------------WORK------------------------ */
 .work-section {
+  background-image: url("/images/work-bg.svg");
+  background-repeat: no-repeat;
+  background-size: 603px 449px;
+  background-position: top 265px left -85px;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 .section {
 }
@@ -192,16 +200,46 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 100px;
+}
+.no-margin-bottom {
+  margin-bottom: 0;
 }
 .work-content-wrap {
   width: 672px;
 }
+
 .work-title {
   font-weight: 700;
   font-size: 72px;
   letter-spacing: -0.02em;
   margin-bottom: 24px;
+  position: relative;
+  z-index: 0;
 }
+.work-title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 482px;
+  height: 30px;
+  background-image: url("/images/work-bg-1.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain; /* или auto, если надо оставить оригинальный размер */
+  z-index: -1; /* чтобы фон был за всем контентом */
+}
+.work-container:not(:first-child) .work-title::after {
+  width: 298px;
+  height: 28px;
+  left: 209px;
+  bottom: -12px;
+}
+.work-container:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
 .work-text {
   line-height: 1.68;
   letter-spacing: -0.02em;
